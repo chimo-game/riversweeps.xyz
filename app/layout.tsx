@@ -18,7 +18,12 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "RiverSweeps - Premium Gaming Experience",
   description: "Experience the thrill of premium online casino gaming",
-    generator: 'v0.app'
+  icons: {
+    icon: "/File1.svg",
+    shortcut: "/File1.svg",
+    apple: "/File1.svg",
+  },
+  generator: "v0.app",
 }
 
 export default function RootLayout({
