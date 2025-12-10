@@ -131,8 +131,8 @@ export function HeroBanner() {
           {/* Right content - Featured image */}
           <div className="relative w-full lg:w-1/2 h-64 lg:h-96">
             <Image
-              src="/golden-treasure-chest-coins-gems-casino-3d-illustr.jpg"
-              alt="Treasure Chest"
+              src="/File3.webp"
+              alt="Coin Village"
               fill
               className="object-contain float-animation"
             />

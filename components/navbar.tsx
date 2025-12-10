@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 
 const categories = ["Slots", "Blackjack", "Roulette", "Poker", "Live Casino", "Sports"]
 
@@ -11,9 +12,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-white font-bold text-xl">R</span>
-            </div>
+            <Image src="/File1.svg" alt="RiverSweeps" width={40} height={40} />
             <span className="text-2xl font-bold text-white">RiverSweeps</span>
           </Link>
 

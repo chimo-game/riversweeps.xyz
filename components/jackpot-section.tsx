@@ -22,22 +22,19 @@ export function JackpotSection() {
         <div className="flex justify-center">
           {/* Jackpot display */}
           <div className="relative">
-            <div className="relative w-80 h-80">
+            <div className="relative w-[400px] h-[400px]">
               <Image
-                src="/golden-fish-mascot-with-jackpot-display-purple-bac.jpg"
+                src="/File39.webp"
                 alt="Fishing Jackpot"
                 fill
                 className="object-contain"
               />
-              {/* Jackpot counter overlay */}
-              <div className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-blue-900/90 rounded-full px-6 py-3 border-4 border-yellow-500">
+              {/* Jackpot counter overlay - positioned in the blue bar area */}
+              <div className="absolute top-[52%] left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="flex items-center gap-2">
-                  <span className="text-yellow-500 text-2xl">$</span>
-                  <span className="text-white text-3xl font-bold">{jackpot.toFixed(2)}</span>
+                  <span className="text-yellow-400 text-3xl font-bold">$</span>
+                  <span className="text-white text-4xl font-bold drop-shadow-lg">{jackpot.toFixed(2)}</span>
                 </div>
-              </div>
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-gradient-to-r from-yellow-600 to-yellow-500 rounded-lg px-4 py-1">
-                <span className="text-white font-bold text-sm">JACKPOT</span>
               </div>
             </div>
           </div>

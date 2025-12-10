@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Trophy, Medal, Crown, TrendingUp } from "lucide-react"
+import Image from "next/image"
 
 const weeklyLeaders = [
   { rank: 1, name: "Dragon***", winnings: 45780, games: 234, avatar: "D" },
@@ -65,7 +66,7 @@ export function LeaderboardSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
-            <Trophy className="w-7 h-7 text-yellow-400" />
+            <Image src="/File31.webp" alt="Leaderboard" width={40} height={40} />
             <h2 className="text-2xl font-bold text-white">Leaderboard</h2>
           </div>
 
