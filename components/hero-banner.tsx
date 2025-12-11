@@ -49,10 +49,10 @@ export function HeroBanner() {
               Join thousands of players. Play the best slots and fishing games for free. Get your welcome bonus now!
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <div className="mt-8 flex justify-center lg:justify-start">
               <Link
                 href="/register"
-                className="group relative inline-flex items-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/30 overflow-hidden"
+                className="group relative inline-flex items-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/30 overflow-hidden animate-pulse-loop animate-scale-loop"
               >
                 <UserPlus className="w-5 h-5" />
                 Register Now
@@ -60,13 +60,6 @@ export function HeroBanner() {
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-shimmer"
                   aria-hidden
                 />
-              </Link>
-              <Link
-                href="#games"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/80 transition-all hover:-translate-y-0.5"
-              >
-                <Eye className="w-5 h-5" />
-                View Games
               </Link>
             </div>
           </div>
