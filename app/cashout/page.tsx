@@ -49,7 +49,7 @@ export default function CashoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-24">
       <LoadingOverlay isLoading={isLoading} messages={loadingMessages} onComplete={handleLoadingComplete} />
 
       <Navbar />

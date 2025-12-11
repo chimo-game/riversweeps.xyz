@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Users, UserPlus } from "lucide-react"
+import { Users, UserPlus, Eye } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export function HeroBanner() {
@@ -27,13 +27,13 @@ export function HeroBanner() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             {/* Live Stats */}
-            <div className="flex flex-wrap gap-3 mb-6 justify-center lg:justify-start">
-              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2">
+              <div className="flex flex-wrap gap-3 mb-6 justify-center lg:justify-start">
+                <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2 shadow-sm">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <Users className="w-4 h-4 text-green-400" />
                 <span className="text-green-400 text-sm font-medium">{activeUsers.toLocaleString()} Online</span>
               </div>
-              <div className="flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 shadow-sm">
                 <UserPlus className="w-4 h-4 text-primary" />
                 <span className="text-primary text-sm font-medium">{totalUsers.toLocaleString()} Users</span>
               </div>
@@ -52,14 +52,20 @@ export function HeroBanner() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <Link
                 href="/register"
-                className="px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all hover:scale-105"
+                className="group relative inline-flex items-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/30 overflow-hidden"
               >
-                Get Started
+                <UserPlus className="w-5 h-5" />
+                Register Now
+                <span
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-shimmer"
+                  aria-hidden
+                />
               </Link>
               <Link
                 href="#games"
-                className="px-8 py-3 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/80 transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/80 transition-all hover:-translate-y-0.5"
               >
+                <Eye className="w-5 h-5" />
                 View Games
               </Link>
             </div>

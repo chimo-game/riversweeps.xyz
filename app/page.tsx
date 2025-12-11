@@ -31,6 +31,34 @@ export default function Home() {
       
       <main className="relative z-10">
         <HeroBanner />
+
+        {/* Quick Actions for money flow */}
+        <section className="px-4">
+          <div className="max-w-6xl mx-auto mt-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between bg-card border border-border rounded-xl p-4 shadow-sm">
+              <div className="text-sm text-muted-foreground">
+                Manage your balance quickly — deposit funds or cash out winnings.
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/deposit"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-blue-500 text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-all hover:-translate-y-0.5 text-center"
+                >
+                  <span className="inline-block w-2 h-2 rounded-full bg-white/80 animate-pulse" />
+                  Deposit
+                </Link>
+                <Link
+                  href="/cashout"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/5 border border-border text-white text-sm font-semibold rounded-lg hover:bg-white/10 transition-all hover:-translate-y-0.5 text-center"
+                >
+                  <span className="inline-block w-2 h-2 rounded-full bg-amber-300/80 animate-pulse" />
+                  Cash Out
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <GameGrid title="Popular Games" games={games} />
         <JackpotSection />
         <FeaturesSection />
