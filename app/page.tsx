@@ -1,210 +1,54 @@
-import { Navbar } from "@/components/navbar";
-import { GameGrid } from "@/components/game-grid";
-import { HeroBanner } from "@/components/hero-banner";
-import { FeaturesSection } from "@/components/features-section";
-import { JackpotSection } from "@/components/jackpot-section";
-import { WinnersTicker } from "@/components/winners-ticker";
-import { SocialProofToast } from "@/components/social-proof-toast";
-import { FloatingElements } from "@/components/floating-elements";
-import { LeaderboardSection } from "@/components/leaderboard-section";
-import { QuickActionBar } from "@/components/quick-action-bar";
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import { Navbar } from "@/components/navbar"
+import { HeroBanner } from "@/components/hero-banner"
+import { GameGrid } from "@/components/game-grid"
+import { JackpotSection } from "@/components/jackpot-section"
+import { FeaturesSection } from "@/components/features-section"
+import { FloatingElements } from "@/components/floating-elements"
+import { SocialProofToast } from "@/components/social-proof-toast"
 
 export default function Home() {
-  const popularGames = [
-    {
-      id: "buffalo",
-      title: "Buffalo Cash Pool",
-      category: "Slots",
-      thumbnail: "/File8.webp",
-      description: "Wild buffalo slot",
-      gameUrl: "#",
-    },
-    {
-      id: "fortune-fish",
-      title: "Fortune Fish Frenzy",
-      category: "Fishing",
-      thumbnail: "/File10.webp",
-      description: "Fish frenzy game",
-      gameUrl: "#",
-    },
-    {
-      id: "lucky-fishing",
-      title: "Lucky Fishing",
-      category: "Fishing",
-      thumbnail: "/File47.webp",
-      description: "Lucky fishing game",
-      gameUrl: "#",
-    },
-    {
-      id: "egypt-fortunes",
-      title: "Egypt Fortunes",
-      category: "Slots",
-      thumbnail: "/File14.webp",
-      description: "Egyptian slot",
-      gameUrl: "#",
-    },
-    {
-      id: "reel-rider",
-      title: "Reel Rider",
-      category: "Slots",
-      thumbnail: "/File16.webp",
-      description: "Biker slot game",
-      gameUrl: "#",
-    },
-    {
-      id: "triple-fortune",
-      title: "Triple Fortune",
-      category: "Slots",
-      thumbnail: "/File18.webp",
-      description: "Fortune slot",
-      gameUrl: "#",
-    },
-    {
-      id: "dragon-coin",
-      title: "Dragon Coin",
-      category: "Slots",
-      thumbnail: "/File9.webp",
-      description: "Dragon slot",
-      gameUrl: "#",
-    },
-    {
-      id: "thunder-fishing",
-      title: "Thunder Fishing",
-      category: "Fishing",
-      thumbnail: "/File44.webp",
-      description: "Thunder fishing",
-      gameUrl: "#",
-    },
-    {
-      id: "elephants-gold",
-      title: "Elephant's Gold",
-      category: "Slots",
-      thumbnail: "/File11.webp",
-      description: "Elephant slot",
-      gameUrl: "#",
-    },
-    {
-      id: "luck-of-panda",
-      title: "Luck of Panda",
-      category: "Slots",
-      thumbnail: "/File13.webp",
-      description: "Panda slot",
-      gameUrl: "#",
-    },
-    {
-      id: "power-of-zorro",
-      title: "Power of Zorro",
-      category: "Slots",
-      thumbnail: "/File15.webp",
-      description: "Zorro slot",
-      gameUrl: "#",
-    },
-    {
-      id: "cactus-riches",
-      title: "Cactus Riches",
-      category: "Slots",
-      thumbnail: "/File17.webp",
-      description: "Cactus slot",
-      gameUrl: "#",
-    },
-  ];
-
-  const playNowGames = [
-    {
-      id: "candy-heroes",
-      title: "Candy Heroes",
-      category: "Arcade",
-      thumbnail: "/File46.webp",
-      description: "Candy adventure",
-      gameUrl: "#",
-    },
-    {
-      id: "galaxy-fishing",
-      title: "Galaxy Fishing",
-      category: "Fishing",
-      thumbnail: "/File45.webp",
-      description: "Space fishing",
-      gameUrl: "#",
-    },
-    {
-      id: "lucky-fishing-remastered",
-      title: "Lucky Fishing Remastered",
-      category: "Fishing",
-      thumbnail: "/File12.webp",
-      description: "Remastered fishing",
-      gameUrl: "#",
-    },
-    {
-      id: "thunder-fishing-2",
-      title: "Thunder Fishing",
-      category: "Fishing",
-      thumbnail: "/File19.webp",
-      description: "Zeus fishing",
-      gameUrl: "#",
-    },
-    {
-      id: "fortune-fish-2",
-      title: "Fortune Fish",
-      category: "Fishing",
-      thumbnail: "/File10.webp",
-      description: "Fortune fishing",
-      gameUrl: "#",
-    },
-    {
-      id: "buffalo-2",
-      title: "Buffalo Cash",
-      category: "Slots",
-      thumbnail: "/File8.webp",
-      description: "Buffalo cash pool",
-      gameUrl: "#",
-    },
-  ];
+  const games = [
+    { id: "1", title: "Buffalo Cash", category: "Slots", thumbnail: "/File8.webp", description: "", gameUrl: "#" },
+    { id: "2", title: "Fortune Fish", category: "Fishing", thumbnail: "/File10.webp", description: "", gameUrl: "#" },
+    { id: "3", title: "Lucky Fishing", category: "Fishing", thumbnail: "/File47.webp", description: "", gameUrl: "#" },
+    { id: "4", title: "Egypt Fortunes", category: "Slots", thumbnail: "/File14.webp", description: "", gameUrl: "#" },
+    { id: "5", title: "Reel Rider", category: "Slots", thumbnail: "/File16.webp", description: "", gameUrl: "#" },
+    { id: "6", title: "Triple Fortune", category: "Slots", thumbnail: "/File18.webp", description: "", gameUrl: "#" },
+    { id: "7", title: "Dragon Coin", category: "Slots", thumbnail: "/File9.webp", description: "", gameUrl: "#" },
+    { id: "8", title: "Thunder Fishing", category: "Fishing", thumbnail: "/File44.webp", description: "", gameUrl: "#" },
+    { id: "9", title: "Candy Heroes", category: "Slots", thumbnail: "/File46.webp", description: "", gameUrl: "#" },
+    { id: "10", title: "Galaxy Fishing", category: "Fishing", thumbnail: "/File45.webp", description: "", gameUrl: "#" },
+  ]
 
   return (
-    <div className="min-h-screen bg-background relative pb-16 md:pb-0">
+    <div className="min-h-screen bg-background relative">
       <FloatingElements />
-
       <Navbar />
-      <WinnersTicker />
-
-      <HeroBanner />
-
-      <main id="games" className="max-w-7xl mx-auto px-6 py-8 relative z-10">
-        <GameGrid
-          title="Popular Games"
-          games={popularGames}
-          icon="star"
-          showSearch
-        />
+      
+      <main className="relative z-10">
+        <HeroBanner />
+        <GameGrid title="Popular Games" games={games} />
+        <JackpotSection />
+        <FeaturesSection />
       </main>
 
-      <FeaturesSection />
-
-      <LeaderboardSection />
-
-      <JackpotSection />
-
-      <main className="max-w-7xl mx-auto px-6 pb-16 relative z-10">
-        <GameGrid title="Play Now" games={playNowGames} icon="gamepad" />
-      </main>
-
-      <footer className="border-t border-border bg-card/50 py-8 px-6 relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <footer className="relative z-10 border-t border-border py-8 px-4 mt-12">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img src="/File1.svg" alt="RiverSweeps" className="w-8 h-8" />
-            <span className="font-bold text-white">RiverSweeps</span>
+            <Image src="/File1.svg" alt="Logo" width={24} height={24} />
+            <span className="text-sm text-muted-foreground">RiverSweeps</span>
           </div>
-          <p className="text-muted-foreground text-sm text-center">
-            Play responsibly. 18+ only. Licensed and regulated.
+          <p className="text-xs text-muted-foreground text-center">
+            © 2024 RiverSweeps. 18+ Only. Play Responsibly.
           </p>
-          <div className="flex items-center gap-4">
-            <span className="text-muted-foreground text-sm">Support 24/7</span>
-          </div>
         </div>
       </footer>
 
       <SocialProofToast />
-      <QuickActionBar />
     </div>
-  );
+  )
 }

@@ -9,7 +9,6 @@ export function HeroBanner() {
   const [activeUsers, setActiveUsers] = useState(12847)
   const [totalUsers, setTotalUsers] = useState(847293)
 
-  // Simulate live counter updates
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveUsers((prev) => prev + Math.floor(Math.random() * 5) - 2)
@@ -19,140 +18,65 @@ export function HeroBanner() {
   }, [])
 
   return (
-    <section className="max-w-7xl mx-auto px-6 pt-6">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a1628] via-[#0f2847] to-[#0a1628] border border-primary/20">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
-
-        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 lg:p-12">
-          {/* Left content */}
-          <div className="text-center lg:text-left mb-8 lg:mb-0 flex-1">
+    <section className="pt-24 pb-16 px-4 relative overflow-hidden">
+      {/* Background glow effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+      
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center lg:text-left">
             {/* Live Stats */}
-            <div className="flex flex-wrap gap-4 mb-6 justify-center lg:justify-start">
-              <div className="flex items-center gap-2 bg-green-500/20 border border-green-500/30 rounded-full px-4 py-2">
+            <div className="flex flex-wrap gap-3 mb-6 justify-center lg:justify-start">
+              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <Users className="w-4 h-4 text-green-400" />
-                <span className="text-green-400 font-semibold">{activeUsers.toLocaleString()} Online</span>
+                <span className="text-green-400 text-sm font-medium">{activeUsers.toLocaleString()} Online</span>
               </div>
-              <div className="flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-4 py-2">
+              <div className="flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
                 <UserPlus className="w-4 h-4 text-primary" />
-                <span className="text-primary font-semibold">{totalUsers.toLocaleString()} Users</span>
+                <span className="text-primary text-sm font-medium">{totalUsers.toLocaleString()} Users</span>
               </div>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold mb-4">
-              <span className="rainbow-text">WELCOME TO</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Play & Win
               <br />
-              <span className="rainbow-text">RIVERSWEEPS</span>
+              <span className="text-primary">Big Prizes</span>
             </h1>
-
-            <p className="text-foreground/70 text-lg mb-8 max-w-md mx-auto lg:mx-0">
-              Join thousands of players winning big every day. Register now and claim your welcome bonus!
+            
+            <p className="mt-4 text-muted-foreground text-lg max-w-md mx-auto lg:mx-0">
+              Join thousands of players. Play the best slots and fishing games for free. Get your welcome bonus now!
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <Link
                 href="/register"
-                className="group relative px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl font-bold text-white text-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-105"
+                className="px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all hover:scale-105"
               >
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                    />
-                  </svg>
-                  REGISTER ACCOUNT
-                </span>
+                Get Started
               </Link>
               <Link
-                href="/deposit"
-                className="group relative px-8 py-4 bg-gradient-to-r from-primary to-pink-600 rounded-xl font-bold text-white text-lg shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
+                href="#games"
+                className="px-8 py-3 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/80 transition-colors"
               >
-                <span className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    />
-                  </svg>
-                  DEPOSIT NOW
-                </span>
+                View Games
               </Link>
             </div>
+          </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-6 mt-8 justify-center lg:justify-start text-foreground/50 text-sm">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Instant Withdrawals</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>24/7 Support</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Secure & Licensed</span>
-              </div>
+          <div className="flex justify-center relative">
+            <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] animate-float">
+              <Image
+                src="/File3.webp"
+                alt="Games"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
             </div>
           </div>
-
-          {/* Right content - Featured image */}
-          <div className="relative w-full lg:w-1/2 h-64 lg:h-96">
-            <Image
-              src="/File3.webp"
-              alt="Coin Village"
-              fill
-              className="object-contain float-animation"
-            />
-          </div>
         </div>
-
-        {/* Floating decorations */}
-        <div className="absolute top-10 left-10 w-8 h-8 rounded-full bg-yellow-500 opacity-60 float-animation" />
-        <div
-          className="absolute bottom-20 right-20 w-6 h-6 rounded-full bg-yellow-500 opacity-40 float-animation"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute top-1/2 left-20 w-4 h-4 rounded-full bg-primary opacity-50 float-animation"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute top-20 right-40 w-10 h-10 bg-primary/20 rotate-45 float-animation"
-          style={{ animationDelay: "0.5s" }}
-        />
       </div>
     </section>
   )

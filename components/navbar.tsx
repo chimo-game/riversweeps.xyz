@@ -3,27 +3,27 @@
 import Link from "next/link"
 import Image from "next/image"
 
-const categories = ["Slots", "Blackjack", "Roulette", "Poker", "Live Casino", "Sports"]
-
 export function Navbar() {
   return (
-    <>
-      <nav className="bg-background px-6 py-4 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/File1.svg" alt="RiverSweeps" width={40} height={40} />
-            <span className="text-2xl font-bold text-white">RiverSweeps</span>
-          </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/File1.svg" alt="Logo" width={32} height={32} />
+          <span className="text-lg font-bold text-white">RiverSweeps</span>
+        </Link>
 
-          {/* Get App Button */}
-          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-all neon-glow">
-            GET APP
-          </button>
+        <div className="flex items-center gap-6">
+          <Link href="#games" className="hidden sm:block text-sm text-muted-foreground hover:text-white transition-colors">
+            Games
+          </Link>
+          <Link
+            href="/register"
+            className="px-5 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Play Now
+          </Link>
         </div>
-      </nav>
-      {/* Pink gradient line */}
-      <div className="navbar-gradient" />
-    </>
+      </div>
+    </header>
   )
 }
