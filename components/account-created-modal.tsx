@@ -14,7 +14,14 @@ export function AccountCreatedModal({ isOpen, onClose, username = "Player" }: Ac
   const router = useRouter()
   const [copied, setCopied] = useState(false)
   const [isActivating, setIsActivating] = useState(false)
-  const referralCode = "RIVER" + Math.random().toString(36).substring(2, 8).toUpperCase()
+  const [pin, setPin] = useState("")
+  // Generate referral code only once on mount
+  const [referralCode] = useState(() => "RIVER" + Math.random().toString(36).substring(2, 8).toUpperCase())
+
+  useEffect(() => {
+    // Generate PIN only once when modal opens or on mount
+    setPin(Array.from({ length: 6 }, () => Math.floor(Math.random() * 100).toString().padStart(2, '0')).join('-'))
+  }, [])
 
   const copyReferralCode = () => {
     navigator.clipboard.writeText(referralCode)
@@ -87,7 +94,7 @@ export function AccountCreatedModal({ isOpen, onClose, username = "Player" }: Ac
       </div>
 
       {/* Modal Content */}
-      <div className="relative bg-card border border-border rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300">
+      <div className="relative bg-card border border-border rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300 mt-20">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -118,7 +125,7 @@ export function AccountCreatedModal({ isOpen, onClose, username = "Player" }: Ac
         <div className="bg-secondary/30 rounded-xl p-3 border border-border/50 mb-6 text-center">
           <p className="text-xs text-muted-foreground mb-1 uppercase tracking-widest">Your Security PIN</p>
           <p className="text-xl font-mono font-bold text-emerald-400 tracking-wider">
-            {Array.from({ length: 6 }, () => Math.floor(Math.random() * 100).toString().padStart(2, '0')).join('-')}
+            {pin}
           </p>
         </div>
 
