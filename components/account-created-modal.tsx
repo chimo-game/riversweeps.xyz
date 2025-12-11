@@ -94,7 +94,7 @@ export function AccountCreatedModal({ isOpen, onClose, username = "Player" }: Ac
       </div>
 
       {/* Modal Content */}
-      <div className="relative bg-card border border-border rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300 mt-20">
+      <div className="relative bg-card border border-border rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300 mt-28 md:mt-20">
         {/* Close Button */}
         <button
           onClick={onClose}
