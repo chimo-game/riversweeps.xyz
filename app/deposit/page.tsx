@@ -2,24 +2,98 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { Navbar } from "@/components/navbar"
 import { LoadingOverlay } from "@/components/loading-overlay"
-import { CreditCard, DollarSign, Bitcoin, Smartphone, Gift, Shield, Zap, ChevronRight, Check } from "lucide-react"
+import {
+  DollarSign,
+  Bitcoin,
+  Gift,
+  Shield,
+  Zap,
+  ChevronRight,
+  Check,
+  Copy,
+  CheckCircle2,
+  Coins,
+} from "lucide-react"
 
 const depositAmounts = [10, 25, 50, 100, 250, 500]
 
 const paymentMethods = [
-  { id: "card", name: "Credit/Debit Card", icon: CreditCard, badge: "Instant" },
-  { id: "crypto", name: "Cryptocurrency", icon: Bitcoin, badge: "0% Fee" },
-  { id: "cashapp", name: "Cash App", icon: Smartphone, badge: "Popular" },
+  {
+    id: "btc",
+    name: "Bitcoin",
+    logo: "/crypto_icons/bitcoin-btc-logo.svg",
+    badge: "Bitcoin Network",
+    address: "bc1qheujxha5h8evndpcfuf5hpstrg67ppjpkq8l0y",
+    qr: "/crypto_qr/BTC_QR.png",
+  },
+  {
+    id: "sol",
+    name: "Solana",
+    logo: "/crypto_icons/solana-sol-logo.svg",
+    badge: "Solana Network",
+    address: "J79NUawUXcr5EPWwz8gEXPw3LLALm1DDTVqSPXbzw94i",
+    qr: "/crypto_qr/Solana_QR.jpg",
+  },
+  {
+    id: "xrp",
+    name: "XRP",
+    logo: "/crypto_icons/xrp_logo.svg",
+    badge: "XRP Network",
+    address: "raj4giHrQxmJYwTnHRBZWQLobDUmp4EREk",
+    qr: "/crypto_qr/XRP_QR.jpg",
+  },
+  {
+    id: "doge",
+    name: "Doge Coin",
+    logo: "/crypto_icons/dogecoin-doge-logo.svg",
+    badge: "Dogecoin Network",
+    address: "DMq4YifKuUUc2sSUEHKgo2hq8R1fVeiqKD",
+    qr: "/crypto_qr/Doge_QR.png",
+  },
+  {
+    id: "bnb",
+    name: "BNB",
+    logo: "/crypto_icons/bnb-bnb-logo.svg",
+    badge: "BNB Smart Chain",
+    address: "0x892167B555Cc2C6c4505ca9d782cb128Edfb58fa",
+    qr: "/crypto_qr/BNB_QR.jpg",
+  },
+  {
+    id: "tron",
+    name: "Tron",
+    logo: "/crypto_icons/tron-trx-logo.svg",
+    badge: "TRON Network",
+    address: "TUsKCntkhEdgbTU71x3UzFQxHziyuQCjor",
+    qr: "/crypto_qr/Tron_QR.jpg",
+  },
+  {
+    id: "usdt",
+    name: "USDT",
+    logo: "/crypto_icons/tether-usdt-logo.svg",
+    badge: "BNB Smart Chain",
+    address: "0x9c1fff5158a14bded845fb4b2c53edc64bed6e66",
+    qr: "/crypto_qr/USDT_QR.jpg",
+  },
+  {
+    id: "usdc",
+    name: "USDC",
+    logo: "/crypto_icons/usd-coin-usdc-logo.svg",
+    badge: "BNB Smart Chain",
+    address: "0x9c1fff5158a14bded845fb4b2c53edc64bed6e66",
+    qr: "/crypto_qr/USDC_QR.jpg",
+  },
 ]
 
 export default function DepositPage() {
   const router = useRouter()
   const [selectedAmount, setSelectedAmount] = useState<number | null>(50)
   const [customAmount, setCustomAmount] = useState("")
-  const [selectedMethod, setSelectedMethod] = useState("card")
+  const [selectedMethod, setSelectedMethod] = useState("btc")
   const [isLoading, setIsLoading] = useState(false)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
 
   const finalAmount = customAmount ? Number.parseFloat(customAmount) : selectedAmount
 
@@ -97,45 +171,108 @@ export default function DepositPage() {
 
             <div className="bg-card rounded-2xl p-6 border border-border">
               <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <CreditCard className="w-5 h-5 text-primary" />
-                Payment Method
+                <Bitcoin className="w-5 h-5 text-primary" />
+                Crypto Payment Method
               </h2>
 
-              <div className="space-y-3">
-                {paymentMethods.map((method) => (
-                  <button
-                    key={method.id}
-                    onClick={() => setSelectedMethod(method.id)}
-                    className={`w-full flex items-center justify-between p-4 rounded-xl transition-all ${
-                      selectedMethod === method.id
-                        ? "bg-gradient-to-r from-primary/20 to-pink-600/20 border-2 border-primary"
-                        : "bg-secondary border border-border hover:border-primary/50"
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                          selectedMethod === method.id ? "bg-primary" : "bg-muted"
-                        }`}
-                      >
-                        <method.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="text-left">
-                        <div className="text-white font-semibold">{method.name}</div>
-                        <div className="text-muted-foreground text-sm">{method.badge}</div>
-                      </div>
-                    </div>
-                    <div
-                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                        selectedMethod === method.id ? "border-primary bg-primary" : "border-muted-foreground"
+              <div className="grid sm:grid-cols-2 gap-3">
+                {paymentMethods.map((method) => {
+                  const isActive = selectedMethod === method.id
+                  return (
+                    <button
+                      key={method.id}
+                      onClick={() => setSelectedMethod(method.id)}
+                      className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all text-left ${
+                        isActive
+                          ? "bg-gradient-to-r from-primary/15 to-primary/5 border-2 border-primary shadow-lg shadow-primary/20"
+                          : "bg-secondary/70 border border-border hover:border-primary/40 hover:bg-secondary"
                       }`}
                     >
-                      {selectedMethod === method.id && <Check className="w-4 h-4 text-white" />}
-                    </div>
-                  </button>
-                ))}
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center border ${
+                            isActive ? "bg-white border-primary/40" : "bg-white/90 border-border"
+                          }`}
+                        >
+                          <Image
+                            src={method.logo}
+                            alt={method.name}
+                            width={26}
+                            height={26}
+                            className="object-contain"
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="text-white font-semibold leading-tight">{method.name}</div>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-semibold bg-white/5 text-muted-foreground border border-border">
+                              {method.badge}
+                            </span>
+                            <span className="text-[10px] text-muted-foreground uppercase">Crypto</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                          isActive ? "border-primary bg-primary" : "border-muted-foreground"
+                        }`}
+                      >
+                        {isActive && <Check className="w-4 h-4 text-white" />}
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
             </div>
+
+            {/* Address & QR */}
+            {paymentMethods.find((m) => m.id === selectedMethod) && (
+              <div className="bg-card rounded-2xl p-6 border border-border">
+                {(() => {
+                  const method = paymentMethods.find((m) => m.id === selectedMethod)!
+                  return (
+                    <div className="grid sm:grid-cols-3 gap-6 items-center">
+                      <div className="sm:col-span-2 space-y-3">
+                        <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                          {method.name} Address
+                        </h3>
+                        <div className="p-4 rounded-xl bg-secondary border border-border">
+                          <div className="text-xs text-muted-foreground mb-1">{method.badge}</div>
+                          <div className="text-white font-mono break-all text-sm leading-relaxed">{method.address}</div>
+                          <div className="mt-3 flex gap-2">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                navigator.clipboard.writeText(method.address)
+                                setCopiedId(method.id)
+                                setTimeout(() => setCopiedId(null), 1500)
+                              }}
+                              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-border text-white text-xs font-semibold hover:bg-white/10 transition-colors"
+                            >
+                              {copiedId === method.id ? (
+                                <>
+                                  <CheckCircle2 className="w-4 h-4 text-green-400" /> Copied
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-4 h-4" /> Copy
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-3">
+                        <p className="text-center text-xs text-muted-foreground">Scan with your crypto wallet.</p>
+                        <div className="w-40 h-40 relative rounded-xl overflow-hidden bg-secondary border border-border">
+                          <Image src={method.qr} alt={`${method.name} QR`} fill className="object-cover" />
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })()}
+              </div>
+            )}
 
             {selectedMethod === "card" && (
               <div className="bg-card rounded-2xl p-6 border border-border">
