@@ -55,7 +55,7 @@ export function HeroBanner() {
                 className="group relative inline-flex items-center gap-2 px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/30 overflow-hidden animate-pulse-loop animate-scale-loop"
               >
                 <UserPlus className="w-5 h-5" />
-                Register Now
+                REGISTER NOW
                 <span
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 animate-shimmer"
                   aria-hidden
