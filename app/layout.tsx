@@ -18,6 +18,9 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "RiverSweeps - Premium Gaming Experience",
   description: "Experience the thrill of premium online casino gaming",
+  other: {
+    "google-site-verification": "-VPDfzJhNmU7fEVENwkEfzpNBQoVYr-itYPQyMcWbak",
+  },
   icons: {
     icon: "/File1.svg",
     shortcut: "/File1.svg",
