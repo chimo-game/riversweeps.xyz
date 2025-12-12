@@ -1,4 +1,4 @@
-// File: /Users/tolapao/Documents/GitHub/next-js-riversweeps-xyz/app/layout.tsx
+// File: /Users/tolapao/Documents/GitHub/riversweeps.xyz/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

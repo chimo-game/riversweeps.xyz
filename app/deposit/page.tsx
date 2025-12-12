@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { Navbar } from "@/components/navbar"
@@ -16,6 +16,7 @@ import {
   Copy,
   CheckCircle2,
   Coins,
+  UserCircle,
 } from "lucide-react"
 
 const depositAmounts = [10, 25, 50, 100, 250, 500]
@@ -93,9 +94,15 @@ export default function DepositPage() {
   const [customAmount, setCustomAmount] = useState("")
   const [selectedMethod, setSelectedMethod] = useState("btc")
   const [isLoading, setIsLoading] = useState(false)
+  const [username, setUsername] = useState("")
+  const [pin, setPin] = useState("")
+  const [formError, setFormError] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
   const finalAmount = customAmount ? Number.parseFloat(customAmount) : selectedAmount
+
+  const isUsernameValid = useMemo(() => username.trim().length > 0, [username])
+  const isValidPin = useMemo(() => /^\d{2}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$/.test(pin), [pin])
 
   const loadingMessages = [
     "Connecting to payment gateway...",
@@ -105,7 +112,38 @@ export default function DepositPage() {
     "Success!",
   ]
 
+  const handlePinInput = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 12)
+    const parts = [
+      digitsOnly.slice(0, 2),
+      digitsOnly.slice(2, 4),
+      digitsOnly.slice(4, 6),
+      digitsOnly.slice(6, 8),
+      digitsOnly.slice(8, 10),
+      digitsOnly.slice(10, 12),
+    ].filter(Boolean)
+    setPin(parts.join("-"))
+  }
+
   const handleDeposit = () => {
+    const trimmedUsername = username.trim()
+
+    if (!finalAmount || finalAmount <= 0) {
+      setFormError("សូមបញ្ចូលចំនួនទឹកប្រាក់សម្រាប់ដាក់ប្រាក់។")
+      return
+    }
+
+    if (!trimmedUsername) {
+      setFormError("សូមបញ្ចូលឈ្មោះអ្នកប្រើប្រាស់របស់អ្នក។")
+      return
+    }
+
+    if (!isValidPin) {
+      setFormError("PIN must be 12 digits in the format ##-##-##-##-##-##.")
+      return
+    }
+
+    setFormError(null)
     setIsLoading(true)
   }
 
@@ -166,6 +204,43 @@ export default function DepositPage() {
                   placeholder="Enter custom amount"
                   className="w-full pl-12 pr-4 py-4 rounded-xl bg-secondary border border-border text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-lg"
                 />
+              </div>
+            </div>
+
+            <div className="bg-card rounded-2xl p-6 border border-border">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <UserCircle className="w-5 h-5 text-primary" />
+                Account Details
+              </h2>
+
+              <div className="space-y-4">
+                <div className="relative">
+                  <label className="block text-sm font-medium text-white mb-2">Username</label>
+                  <input
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter your username"
+                    className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
+                  />
+                  {isUsernameValid && (
+                    <Check className="w-4 h-4 text-green-400 absolute right-4 top-[42px]" aria-hidden="true" />
+                  )}
+                </div>
+
+                <div className="relative">
+                  <label className="block text-sm font-medium text-white mb-2">PIN (12 digits)</label>
+                  <input
+                    value={pin}
+                    onChange={(e) => handlePinInput(e.target.value)}
+                    placeholder="12-34-56-78-90-12"
+                    inputMode="numeric"
+                    className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-white placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">Use format ##-##-##-##-##-## (12 digits total)</p>
+                  {isValidPin && (
+                    <Check className="w-4 h-4 text-green-400 absolute right-4 top-[42px]" aria-hidden="true" />
+                  )}
+                </div>
               </div>
             </div>
 
@@ -330,6 +405,12 @@ export default function DepositPage() {
                 </div>
               </div>
 
+              {formError && (
+                <div className="mb-4 px-3 py-2 rounded-lg border border-red-500/50 bg-red-500/10 text-red-200 text-sm">
+                  {formError}
+                </div>
+              )}
+
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-xl p-4 mb-6">
                 <div className="flex items-center gap-3">
                   <Gift className="w-8 h-8 text-green-500" />
@@ -342,7 +423,7 @@ export default function DepositPage() {
 
               <button
                 onClick={handleDeposit}
-                disabled={isLoading || !finalAmount}
+                disabled={isLoading || !finalAmount || !username.trim() || !isValidPin}
                 className="w-full py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-lg hover:opacity-90 transition-all transform hover:scale-[1.02] shadow-lg shadow-green-500/30 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 DEPOSIT ${finalAmount || 0}
