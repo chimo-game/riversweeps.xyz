@@ -97,10 +97,7 @@ export const metadata: Metadata = {
     "theme-color": "#000000",
   },
   icons: {
-    icon: [
-      { url: "/File1.svg", type: "image/svg+xml" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
+    icon: "/File1.svg",
     shortcut: "/File1.svg",
     apple: "/File1.svg",
   },
