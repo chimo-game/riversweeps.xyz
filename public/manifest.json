@@ -1,0 +1,28 @@
+{
+  "name": "RiverSweeps - Premium Online Casino & Gaming Platform",
+  "short_name": "RiverSweeps",
+  "description": "Play premium online casino games at RiverSweeps. Enjoy slots, fishing games, instant play, daily bonuses, and secure crypto deposits.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/File1.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
+

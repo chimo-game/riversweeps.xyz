@@ -1119,6 +1119,9 @@ video {
 .top-\[1px\] {
   top: 1px;
 }
+.top-\[42px\] {
+  top: 42px;
+}
 .top-\[50\%\] {
   top: 50%;
 }
@@ -1133,9 +1136,6 @@ video {
 }
 .top-full {
   top: 100%;
-}
-.top-\[42px\] {
-  top: 42px;
 }
 .z-0 {
   z-index: 0;
@@ -2164,6 +2164,9 @@ video {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
 }
+.border-red-500\/50 {
+  border-color: rgb(239 68 68 / 0.5);
+}
 .border-sidebar-border {
   border-color: hsl(var(--sidebar-border));
 }
@@ -2190,9 +2193,6 @@ video {
 }
 .border-yellow-500\/30 {
   border-color: rgb(234 179 8 / 0.3);
-}
-.border-red-500\/50 {
-  border-color: rgb(239 68 68 / 0.5);
 }
 .border-b-blue-800 {
   --tw-border-opacity: 1;
@@ -2395,6 +2395,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
 }
+.bg-red-500\/10 {
+  background-color: rgb(239 68 68 / 0.1);
+}
 .bg-secondary {
   background-color: hsl(var(--secondary));
 }
@@ -2447,9 +2450,6 @@ video {
 }
 .bg-yellow-500\/20 {
   background-color: rgb(234 179 8 / 0.2);
-}
-.bg-red-500\/10 {
-  background-color: rgb(239 68 68 / 0.1);
 }
 .bg-\[url\(\'data\:image\/svg\+xml\;base64\2c PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEiIGN4PSIyMCIgY3k9IjIwIiByPSIyIi8\+PC9nPjwvc3ZnPg\=\=\'\)\] {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjEiIGN4PSIyMCIgY3k9IjIwIiByPSIyIi8+PC9nPjwvc3ZnPg==');
@@ -3091,6 +3091,10 @@ video {
 .text-primary-foreground {
   color: hsl(var(--primary-foreground));
 }
+.text-red-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
+}
 .text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity, 1));
@@ -3133,10 +3137,6 @@ video {
 .text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity, 1));
-}
-.text-red-200 {
-  --tw-text-opacity: 1;
-  color: rgb(254 202 202 / var(--tw-text-opacity, 1));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
