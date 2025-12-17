@@ -9,6 +9,7 @@ import { JackpotSection } from "@/components/jackpot-section"
 import { FeaturesSection } from "@/components/features-section"
 import { FloatingElements } from "@/components/floating-elements"
 import { SocialProofToast } from "@/components/social-proof-toast"
+import { RiversweepsContentSection } from "@/components/riversweeps-content-section"
 
 export default function Home() {
   const games = [
@@ -62,6 +63,7 @@ export default function Home() {
         <GameGrid title="Popular Games" games={games} />
         <JackpotSection />
         <FeaturesSection />
+        <RiversweepsContentSection />
       </main>
 
       <footer className="relative z-10 border-t border-border py-8 px-4 mt-12">
